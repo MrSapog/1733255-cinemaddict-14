@@ -146,10 +146,11 @@ export const generateFilm = () => {
     comments: getCommentsById(randomComments, productionDate, ...randomCommentsIds),
     age: age[getRandomInteger(0, age.length - 1)],
     director: directors[getRandomInteger(0, directors.length - 1)],
-    writers: getRandomStringArray(writers, WRITERS_MIN_COUNT, WRITERS_MAX_COUNT).join(', '),
-    actors: getRandomStringArray(actors, ACTORS_MIN_COUNT, ACTORS_MAX_COUNT).join(', '),
+    writers: getRandomStringArray(writers, WRITERS_MIN_COUNT, WRITERS_MAX_COUNT),
+    actors: getRandomStringArray(actors, ACTORS_MIN_COUNT, ACTORS_MAX_COUNT),
     country: countries[getRandomInteger(0, countries.length - 1)],
     fullDate: productionDate.format('D MMMM YYYY'),
   };
 };
+
 
