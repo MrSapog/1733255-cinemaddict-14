@@ -1,3 +1,5 @@
+import {createElement} from '../utils';
+
 const createGenreItem = (genre) => {
   return `<span class="film-details__genre">${genre}</span>`;
 };
@@ -19,14 +21,14 @@ const createCommentItem = (comment) => {
           </li>`;
 };
 
-export const createFilmDetailsPopup = (film) => {
+const createFilmPopupTemplate = (film) => {
   const {poster, age, title, rating, description, director, writers, actors, fullDate, duration, country, genres, isWatchlist, isWatched, isFavorite, comments} = film;
   const genresList = genres.map((genre) => createGenreItem(genre)).join('');
   const commentsList = comments.map((comment) => createCommentItem(comment)).join('');
   const watchlistActive = isWatchlist ? 'checked' : '';
   const watchedActive = isWatched ? 'checked' : '';
   const favoriteActive = isFavorite ? 'checked' : '';
-  return `<section class="film-details" style="position: relative"> <!-- Временно отрисовать попап на главной -->
+  return `<section class="film-details">
   <form class="film-details__inner" action="" method="get">
     <div class="film-details__top-container">
       <div class="film-details__close">
@@ -144,3 +146,23 @@ export const createFilmDetailsPopup = (film) => {
   </form>
 </section>`;
 };
+
+export default class FilmPopUp {
+  constructor(film) {
+    this._film = film;
+    this._element = null;
+  }
+  getTemplate() {
+    return createFilmPopupTemplate(this._film);
+  }
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+  removeElement() {
+    this._element = null;
+  }
+}
