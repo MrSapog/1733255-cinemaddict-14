@@ -1,4 +1,5 @@
-import {capitalizeFirstLetter, createElement} from '../utils.js';
+import {capitalizeFirstLetter} from '../utils/common.js';
+import AbstractView from './abstract.js';
 
 const createMenuItem = (filter) => {
   const {name, count} = filter;
@@ -18,23 +19,13 @@ const createMenu = (filters) => {
   </nav>`;
 };
 
-export default class Menu {
+export default class Menu extends AbstractView {
   constructor(filters) {
+    super();
     this._filters = filters;
-    this._element = null;
   }
   getTemplate() {
     return createMenu(this._filters);
-  }
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-  removeElement() {
-    this._element = null;
   }
 }
 

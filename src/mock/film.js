@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
-import {getRandomInteger} from '../utils.js';
-import {getRandomFloat} from '../utils.js';
-import {getRandomStringArray} from '../utils.js';
-import {getRandomNumberArray} from '../utils.js';
+import {getRandomInteger} from '../utils/common.js';
+import {getRandomFloat} from '../utils/common.js';
+import {getRandomStringArray} from '../utils/common.js';
+import {getRandomNumberArray} from '../utils/common.js';
 import {randomComments} from './comments.js';
 
 const SENTENCES_MIN_COUNT = 1;
