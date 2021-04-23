@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import {nanoid} from 'nanoid';
 import {getRandomInteger} from '../utils/common.js';
 import {getRandomFloat} from '../utils/common.js';
 import {getRandomStringArray} from '../utils/common.js';
@@ -133,6 +134,7 @@ export const generateFilm = () => {
   const commentsIds = randomComments.map((comment) => comment.id);
   const randomCommentsIds = getRandomNumberArray(commentsIds, COMMENTS_MIN_COUNT, COMMENTS_MAX_COUNT);
   return {
+    id: nanoid(),
     title: titles[getRandomInteger(0, titles.length - 1)],
     poster: posters[getRandomInteger(0, posters.length - 1)],
     description: getRandomStringArray(descriptionSentences, SENTENCES_MIN_COUNT, SENTENCES_MAX_COUNT).join(' '),
